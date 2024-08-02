@@ -7,7 +7,7 @@ import { restriccion } from 'src/app/models/restriccion';
   providedIn: 'root'
 })
 export class RestriccionService {
-  private urlBase = "http://localhost:8080/v1.0/pico-placa/";
+  private urlBase = "https://placas-production.up.railway.app/v1.0/pico-placa/";
 
   constructor(private clientHttp: HttpClient) { }
 

@@ -7,7 +7,7 @@ import { Plate } from 'src/app/models/plate';
 })
 export class PlateService {
 
-  private urlBase = "http://localhost:8080/v1.0/pico-placa/";
+  private urlBase = "https://placas-production.up.railway.app/v1.0/pico-placa/";
   constructor(private clintHttp: HttpClient) { }
 
   getPlateList(): Observable<Plate[]>{
