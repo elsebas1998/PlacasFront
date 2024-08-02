@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="container text-center" style="margin: 30px">
+    <h3>Crear placa</h3>
+  </div>
+  <form [formGroup]="plateForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="numeroPlaca" class="form-label">Número de placa</label>
+      <input type="text" 
+             class="form-control" 
+             id="numeroPlaca" 
+             formControlName="number"
+             pattern="[A-Za-z]{3}[0-9]{3}" 
+             maxlength="6" 
+             required
+             [class.is-invalid]="plateForm.get('number')?.invalid && (plateForm.get('number')?.dirty || plateForm.get('number')?.touched || formSubmitted)">
+      <div class="invalid-feedback">
+        El número de placa debe tener 3 letras seguidas de 3 números (ejemplo: AAA123).
+      </div>
+    </div>
+    
+    <div formArrayName="days">
+      <div *ngFor="let day of daysForm.controls; let i = index">
+        <div [formGroupName]="i">
+          <h4>Día {{i + 1}}</h4>
+          <div class="mb-3">
+            <label class="form-label">Hora de inicio</label>
+            <input type="time" class="form-control" formControlName="hourStart">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Hora final</label>
+            <input type="time" class="form-control" formControlName="hourFinal">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Fecha del día</label>
+            <input type="date" class="form-control" formControlName="dateDay" [attr.min]="minDate">
+          </div>
+          <button type="button" class="btn btn-danger btn-sm" (click)="removeDay(i)">Quitar</button>
+        </div>
+      </div>
+    </div>
+    
+    <button type="button" class="btn btn-secondary btn-sm me-3" (click)="addDay()">Agregar día</button>
+    <button type="submit" class="btn btn-primary btn-sm me-3">Guardar</button>
+    <button type="button" routerLink="/placas" class="btn btn-primary btn-sm me-3">Regresar</button>
+  </form>
+</div>

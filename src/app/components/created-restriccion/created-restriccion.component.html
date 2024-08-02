@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="container text-center" style="margin: 30px">
+    <h3>Crear Restricción</h3>
+  </div>
+  <form [formGroup]="restriccionForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="numeroFinal" class="form-label">Número final</label>
+      <input type="number" 
+             class="form-control" 
+             id="numeroFinal" 
+             formControlName="numberFinal"
+             min="0"
+             max="9" 
+             required
+             [class.is-invalid]="restriccionForm.get('numberFinal')?.invalid && (restriccionForm.get('numberFinal')?.dirty || restriccionForm.get('numberFinal')?.touched || formSubmitted)">
+      <div class="invalid-feedback">
+        El número final debe ser un dígito entre 0 y 9.
+      </div>
+    </div>
+    
+    <div formArrayName="dateDay">
+      <div *ngFor="let day of dateDayForm.controls; let i = index">
+        <div [formGroupName]="i">
+          <h4>Día {{i + 1}}</h4>
+          <div class="mb-3">
+            <label class="form-label">Hora de inicio</label>
+            <input type="time" class="form-control" formControlName="hourStart">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Hora final</label>
+            <input type="time" class="form-control" formControlName="hourFinal">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Fecha del día</label>
+            <input type="date" class="form-control" formControlName="dateDay">
+          </div>
+          <button type="button" class="btn btn-danger btn-sm" (click)="removeDay(i)">Quitar</button>
+        </div>
+      </div>
+    </div>
+    
+    <button type="button" class="btn btn-secondary btn-sm me-3" (click)="addDay()">Agregar día</button>
+    <button type="submit" class="btn btn-primary btn-sm me-3">Guardar</button>
+    <button type="button" routerLink="/restricciones" class="btn btn-primary btn-sm me-3">Regresar</button>
+  </form>
+</div>

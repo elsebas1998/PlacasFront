@@ -1,0 +1,20 @@
+footer {
+    background-color: #343a40; /* Color de fondo oscuro */
+    color: white; /* Color del texto blanco */
+  }
+  
+  footer .text-white {
+    color: white !important; /* Asegúrate de que el color del enlace sea blanco */
+  }
+  
+  footer i {
+    font-size: 24px; /* Tamaño del ícono */
+    margin-left: 10px; /* Espacio a la izquierda del ícono */
+  }
+  
+  footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

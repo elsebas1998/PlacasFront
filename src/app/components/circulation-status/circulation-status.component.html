@@ -1,0 +1,8 @@
+<div class="container mt-4">
+    <h2>Estado de Circulación para la Placa: {{plateNumber}}</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let status of circulationStatus | keyvalue">
+        {{status.key | date:'shortDate'}}: {{status.value}}
+      </li>
+    </ul>
+  </div>
